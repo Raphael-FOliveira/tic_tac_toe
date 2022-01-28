@@ -10,9 +10,15 @@ def play():
 
 def get_turn_input(board, player):
     print(board.board)
-    if player == 1:
+    row = int(input("Row (1 - 3): "))
+    if row < 1 or row > 3:
+        print("Invalid input, try again.")
         row = int(input("Row (1 - 3): "))
-        col = int(input("Column (1 - 3): "))
+    col = int(input("Column (1 - 3): "))
+    if col < 1 or col > 3:
+        print("Invalid input, try again.")
+        row = int(input("Row (1 - 3): "))
+    if player == 1:
         if board.positions[row-1][col-1] == " ":
             board.place_x(row, col)
             check_win(board)
@@ -21,8 +27,6 @@ def get_turn_input(board, player):
             print("This place is already taken, please try again:")
             return get_turn_input(board, 1)
     if player == 2:
-        row = int(input("Row (1 - 3): "))
-        col = int(input("Column (1 - 3): "))
         if board.positions[row - 1][col - 1] == " ":
             board.place_o(row, col)
             check_win(board)
