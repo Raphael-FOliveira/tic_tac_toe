@@ -34,6 +34,7 @@ def get_turn_input(board, player):
 
 def check_win(board: Board):
     mtx = board.positions
+    all_positions = [[mark for mark in row] for row in mtx]
     for row in mtx:
         if row[0] == row[1] == row[2] != " ":
             print(board.board)
@@ -53,6 +54,10 @@ def check_win(board: Board):
         print(board.board)
         print(f"{mtx[2][0]} wins!")
         return play_again()
+    if " " not in all_positions:
+        print(board.board)
+        print("It's a draw!")
+        return play_again()
 
 
 def play_again():
@@ -62,18 +67,3 @@ def play_again():
         play()
     else:
         exit(0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
