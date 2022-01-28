@@ -34,7 +34,7 @@ def get_turn_input(board, player):
 
 def check_win(board: Board):
     mtx = board.positions
-    all_positions = [[mark for mark in row] for row in mtx]
+    all_positions = [mark for mark in row for row in mtx]
     for row in mtx:
         if row[0] == row[1] == row[2] != " ":
             print(board.board)
